@@ -8,7 +8,8 @@ unique=[]
 candidate=[]
 count=0
 votes=[]
-
+percent=[]
+output=[]
 
 with open (path , "r" , newline='' , encoding="UTF-8" ) as vote_data:
     csv_reader= csv.reader(vote_data , delimiter= "," )
@@ -34,8 +35,13 @@ with open (path , "r" , newline='' , encoding="UTF-8" ) as vote_data:
         votes.append(count)
         count=0
 
-  
-
+for vote in votes:
+    p= float(vote/counta)*100
+    f=round(p,2)
+    percent.append(f)
+winner_max= max(votes)  
+winner_index=votes.index(winner_max)
+winner=unique[winner_index]
 
 print("Election Results")
 print("----------------------------")
@@ -43,3 +49,11 @@ print (f"Total Votes : {counta}")
 print("----------------------------")
 print (unique)
 print(votes)
+print(percent)
+
+output=zip(unique , percent , votes)
+print(output)
+
+print("----------------------------")
+print(f"winner : {winner}")
+print("----------------------------")
