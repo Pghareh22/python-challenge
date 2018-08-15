@@ -23,9 +23,9 @@ with open (path , "r" , newline='' , encoding="UTF-8" ) as budget_data:
         sum = sum+ int(row[1])
         list_data.append(int(row[1]))
         list_date.append(str(row[0]))    
-
-print (f"Total Months: {counta}")
-
+print("Financial Analysis")
+print("---------------------------------")
+print(f"Total Months: {counta}")
 print(f"Total: ${sum}")
 #print (list_data)
 
@@ -51,17 +51,17 @@ min= min(tafavot_list)
 min_index= tafavot_list.index(min)
 max_decrease= list_date[min_index+1]
 
+
 print(f"Average Change: $ {average_change}")
-print(f"Greatest Increase in Profits: {max_increase} ${max} ")
-print(f"Greatest Decrease in Profits: {max_decrease} ${min} ")
+print(f"Greatest Increase in Profits: {max_increase} (${max})")
+print(f"Greatest Decrease in Profits: {max_decrease} (${min}) ")
 
 path= os.path.join ('..' , 'PyBank' , 'budget_data.txt')
 with open (path , "w" , newline='' , encoding="UTF-8" ) as budget_data_txt:
-    csv_writer= csv.writer(budget_data_txt)
-
-    csv_writer.writerow("Financial Analysis")
-    csv_writer.writerow("---------------------------------")
-    csv_writer.writerow("Total Months:  , {average_change}")
-    csv_writer.writerow("")
-    csv_writer.writerow("")
-    budget_data_txt.close()
+    budget_data_txt.write("Financial Analysis" '\n')
+    budget_data_txt.write("-----------------------------")
+    budget_data_txt.write(f"Total Months: {counta} ")
+    budget_data_txt.write(f"Total: ${sum}")
+    budget_data_txt.write(f"Average Change: $ {average_change}")
+    budget_data_txt.write(f"Greatest Increase in Profits: {max_increase} (${max})")
+    budget_data_txt.write(f"Greatest Decrease in Profits: {max_decrease} (${min}) ")
