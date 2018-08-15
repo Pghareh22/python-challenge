@@ -38,7 +38,7 @@ with open (path , "r" , newline='' , encoding="UTF-8" ) as vote_data:
 for vote in votes:
     p= float(vote/counta)*100
     f=round(p,2)
-    percent.append(f)
+    percent.append(str(f)+"%")
 winner_max= max(votes)  
 winner_index=votes.index(winner_max)
 winner=unique[winner_index]
@@ -47,13 +47,26 @@ print("Election Results")
 print("----------------------------")
 print (f"Total Votes : {counta}")
 print("----------------------------")
-print (unique)
-print(votes)
-print(percent)
 
 output=zip(unique , percent , votes)
-print(output)
+for i in output:
+    print(f"{i}")
 
 print("----------------------------")
 print(f"winner : {winner}")
 print("----------------------------")
+
+path= os.path.join ('..' , 'PyPoll' , 'pypoll.txt')
+with open (path , "w" , newline='' , encoding="UTF-8" ) as pypoll_txt:
+    pypoll_txt.write("Election Results")
+    pypoll_txt.write("-----------------------------")
+    pypoll_txt.write(f"Total Votes : {counta}")
+    pypoll_txt.write("-----------------------------")
+    
+    ##pypoll_txt.write(i for i in zip)
+
+    pypoll_txt.write("----------------------------")
+    pypoll_txt.write(f"winner : {winner}")
+    pypoll_txt.write("----------------------------")
+    
+    
